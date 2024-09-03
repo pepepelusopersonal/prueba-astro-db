@@ -9,5 +9,8 @@ export default defineConfig({
     ssr: {
       noExternal: ['beercss'],
     },
+  },
+  server: {
+    host: true,
   }
 });
