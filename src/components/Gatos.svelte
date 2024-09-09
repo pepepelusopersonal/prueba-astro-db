@@ -1,9 +1,9 @@
 <script lang="ts">
+    import { onMount } from 'svelte'
     import Card from '../components/Card.svelte'
     import { gatos as gatosImport, duenos, type Gato } from '../data/GatosObj.ts'
     import dataPrueba from '../data/dataPrueba.json'
 
-    let duenoInd
     let gatos:Gato[] = []
 
     const cargarDatosPrueba = () => {
@@ -11,6 +11,10 @@
         gatosImport.push(...dataPrueba.gatos)
         gatos = gatosImport
     }
+
+    onMount(() => {
+        console.log(duenos)
+    })
 </script>
 
 <div>

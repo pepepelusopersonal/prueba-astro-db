@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "exclude": [
-    "src/data/"
+  "include": [
+    "src/data/",
+    "src/components"
   ],
 }
