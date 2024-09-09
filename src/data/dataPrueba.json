@@ -1,0 +1,37 @@
+{
+    "duenos": [
+        {
+            "cedula": "1234567890",
+            "nombre": "Juan",
+            "apellido": "Pérez",
+            "edad": 30
+        },
+        {
+            "cedula": "9876543210", 
+            "nombre": "María", 
+            "apellido": "Gómez", 
+            "edad": 25
+        }
+
+    ],
+    "gatos": [
+        {
+            "id": "672b86a2-f3ea-4bd3-80e9-8a3a28a333a0",
+            "nombre": "Whiskers",
+            "edad": 2,
+            "dueno_id": "1234567890"
+        },
+        {
+            "id": "772b86a2-f3ea-4bd3-80e9-8a3a28a333a1",
+            "nombre": "Mittens",
+            "edad": 3,
+            "dueno_id": "9876543210"
+        },
+        {
+            "id": "872b86a2-f3ea-4bd3-80e9-8a3a28a333a2",
+            "nombre": "Snowball",
+            "edad": 1,
+            "dueno_id": "1234567890"
+        }
+    ]
+}

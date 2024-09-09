@@ -1,11 +1,16 @@
 ---
+import Gatos from '../components/Gatos.svelte';
 import Layout from '../layouts/Layout.astro';
+
+
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Visualizar Gatos">
 	<main class="responsive">
-		
+		<h1 class="center-align">Gatos</h1>
+		<Gatos client:load />
 	</main>
+	
 </Layout>
 
 <style>
