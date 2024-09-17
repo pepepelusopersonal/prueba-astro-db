@@ -2,19 +2,11 @@
     import { onMount } from 'svelte'
     import Card from '../components/Card.svelte'
     import { type Gato, type Dueno } from '../data/GatosObj.ts'
-    import dataPrueba from '../data/dataPrueba.json'
 
     let gatos: Gato[] = []
     let duenos: Dueno[] = []
 
     let archivo: FileList
-
-    const cargarDatosPrueba = () => {
-        gatos = dataPrueba.gatos as Gato[]
-        duenos = dataPrueba.duenos as Dueno[]
-        sessionStorage.setItem('gatos', JSON.stringify(gatos))
-        sessionStorage.setItem('duenos', JSON.stringify(duenos))
-    }
 
     const eliminarDatosStoraged = () => {
         sessionStorage.removeItem('gatos')
@@ -29,12 +21,17 @@
             if (event.target) {
                 const jsonData = JSON.parse(event.target.result as string)
                 console.log(jsonData)
+                gatos = jsonData.gatos as Gato[]
+                duenos = jsonData.duenos as Dueno[]
+                sessionStorage.setItem('gatos', JSON.stringify(gatos))
+                sessionStorage.setItem('duenos', JSON.stringify(duenos))
             }
         }
         reader.onerror = (event) => {
             console.error("Error al leer el archivo:", event)
         }
         reader.readAsText(archivo[0])
+        archivo = undefined as unknown as FileList
     }
 
     onMount(() => {
@@ -63,15 +60,12 @@
         {/if}
     </div>
     <div class="grid vertical-margin large-margin">
-        <button class="s12 m4">
+        <button class="s12 m6">
             <i>attach_file</i>
             <span>Subir datos</span>
             <input type="file" accept=".json" bind:files={archivo} />
           </button>
-        <button class="s12 m4" on:click={cargarDatosPrueba}>
-            Cargar datos de prueba
-        </button>
-        <button class="s12 m4" on:click={eliminarDatosStoraged}>
+        <button class="s12 m6" on:click={eliminarDatosStoraged}>
             Elmiminar datos
         </button>
     </div>
