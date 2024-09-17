@@ -20,7 +20,6 @@
         reader.onload = (event) => {
             if (event.target) {
                 const jsonData = JSON.parse(event.target.result as string)
-                console.log(jsonData)
                 gatos = jsonData.gatos as Gato[]
                 duenos = jsonData.duenos as Dueno[]
                 sessionStorage.setItem('gatos', JSON.stringify(gatos))
@@ -32,6 +31,17 @@
         }
         reader.readAsText(archivo[0])
         archivo = undefined as unknown as FileList
+    }
+
+    const descargarDatos = () => {
+        const data = JSON.stringify({ gatos, duenos }, null, 2)
+        const blob = new Blob([data], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'datos.json'
+        a.click()
+        URL.revokeObjectURL(url)
     }
 
     onMount(() => {
@@ -60,13 +70,18 @@
         {/if}
     </div>
     <div class="grid vertical-margin large-margin">
-        <button class="s12 m6">
+        <button class="s12 m4">
             <i>attach_file</i>
             <span>Subir datos</span>
             <input type="file" accept=".json" bind:files={archivo} />
-          </button>
-        <button class="s12 m6" on:click={eliminarDatosStoraged}>
-            Elmiminar datos
+        </button>
+        <button class="s12 m4" on:click={descargarDatos}>
+            <i>download</i>
+            <span>Descargar datos</span>
+        </button>
+        <button class="s12 m4" on:click={eliminarDatosStoraged}>
+            <i>delete</i>
+            <span>Elmiminar datos</span>
         </button>
     </div>
 </div>

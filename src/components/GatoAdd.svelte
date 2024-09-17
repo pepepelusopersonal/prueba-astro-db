@@ -18,7 +18,6 @@ onMount(() => {
 })
 
 const agregarFun = () => {
-    console.log(newGato)
     if (newGato.dueno_id !== "" && newGato.edad !== 0 && newGato.nombre !== "") {
         sessionStorage.setItem('gatos', JSON.stringify([...JSON.parse(sessionStorage.getItem('gatos') || '[]'), newGato]));
         window.alert("Gato agregado con éxito.")
