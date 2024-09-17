@@ -11,7 +11,3 @@ export interface Dueno {
     apellido: string
     edad: number
 }
-
-export const gatos: Gato[] = []
-export const duenos: Dueno[] = []
-

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { duenos, type Dueno } from "../data/GatosObj";
+import { type Dueno } from "../data/GatosObj";
 
 const newDueno: Dueno = {
     cedula: "",
@@ -10,7 +10,7 @@ const newDueno: Dueno = {
 
 const agregarFun = () => {
     if (newDueno.cedula !== "" && newDueno.nombre !== "" && newDueno.apellido !== "" && newDueno.edad !== 0) {
-        duenos.push(newDueno)
+        sessionStorage.setItem("duenos", JSON.stringify([...JSON.parse(sessionStorage.getItem("duenos") || "[]"), newDueno]))
         window.alert("Dueño agregado con éxito.")
         window.location.href = "/"
     } else {
